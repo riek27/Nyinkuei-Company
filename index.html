@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>Peace and Development Organization (PDO) | South Sudan</title>
 
     <!-- Google Fonts -->
@@ -69,6 +69,11 @@
         html {
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        body {
+            overflow-x: hidden;
         }
 
         /* ── Animations ── */
@@ -240,7 +245,7 @@
         .mobile-dropdown-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .mobile-dropdown-content.open {
             max-height: 800px;
@@ -272,6 +277,9 @@
         }
 
         /* ── Card Hover ── */
+        .profile-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
         .profile-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
@@ -302,99 +310,91 @@
         }
 
         /* ============================================================ */
-/* WHERE WE WORK – PREMIUM CARD STYLING                         */
-/* ============================================================ */
-.location-card {
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s;
-}
-.location-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 30px -10px rgba(10,61,92,0.15);
-    border-color: rgba(10,61,92,0.2);
-}
-.location-card:hover h5 {
-    color: #0A3D5C; /* primary */
-}
-.location-card:hover .group-hover\:bg-primary {
-    background-color: #0A3D5C !important;
-}
+        /* WHERE WE WORK – PREMIUM CARD STYLING                         */
+        /* ============================================================ */
+        .location-card {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s;
+        }
+        .location-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(10,61,92,0.15);
+            border-color: rgba(10,61,92,0.2);
+        }
+        .location-card:hover h5 {
+            color: #0A3D5C;
+        }
+        .location-card:hover .group-hover\:bg-primary {
+            background-color: #0A3D5C !important;
+        }
 
         /* ============================================================ */
-/* PROCESS CARDS – ELEVATED STYLE                               */
-/* ============================================================ */
-.process-card {
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.4s ease;
-}
-
-.process-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 40px -12px rgba(10, 61, 92, 0.18);
-}
-
-/* subtle shine on hover */
-.process-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -75%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.6),
-        transparent
-    );
-    transform: skewX(-25deg);
-    transition: left 0.7s ease;
-    pointer-events: none;
-}
-
-.process-card:hover::before {
-    left: 120%;
-}
-
-/* icon container smooth scale */
-.process-card .w-14.h-14 {
-    transition: background-color 0.4s, transform 0.3s;
-}
-.process-card:hover .w-14.h-14 {
-    transform: scale(1.05);
-}
+        /* PROCESS CARDS – ELEVATED STYLE                               */
+        /* ============================================================ */
+        .process-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+        .process-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(10, 61, 92, 0.18);
+        }
+        .process-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.7s ease;
+            pointer-events: none;
+        }
+        .process-card:hover::before {
+            left: 120%;
+        }
+        .process-card .w-14.h-14 {
+            transition: background-color 0.4s, transform 0.3s;
+        }
+        .process-card:hover .w-14.h-14 {
+            transform: scale(1.05);
+        }
 
         /* ── Partners infinite scroll ── */
-.partners-track {
-    animation: scrollPartners 30s linear infinite;
-}
+        .partners-track {
+            animation: scrollPartners 30s linear infinite;
+        }
+        @keyframes scrollPartners {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        #partners:hover .partners-track {
+            animation-play-state: paused;
+        }
+        .partner-pill {
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        .partner-pill:hover {
+            background-color: #0A3D5C !important;
+            color: white !important;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(10,61,92,0.2);
+        }
 
-@keyframes scrollPartners {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-/* Pause animation on hover (optional) */
-#partners:hover .partners-track {
-    animation-play-state: paused;
-}
-
-/* Partner pill styling */
-.partner-pill {
-    transition: all 0.3s ease;
-    user-select: none;
-}
-.partner-pill:hover {
-    background-color: #0A3D5C !important;
-    color: white !important;
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(10,61,92,0.2);
-}
+        /* ── Mobile menu button scrolled state ── */
+        #navbar.scrolled .mobile-menu-btn {
+            color: #0F172A;
+            background: rgba(15,23,42,0.06);
+        }
+        #navbar.scrolled .mobile-menu-btn:hover {
+            background: rgba(15,23,42,0.12);
+        }
     </style>
 </head>
 <body>
@@ -480,7 +480,7 @@
             <!-- CTA + Mobile Toggle -->
             <div class="flex items-center gap-3 z-[110]">
                 <a href="#contact" class="hidden md:inline-flex bg-accent hover:bg-accent-light text-white font-body font-semibold px-5 py-2.5 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 text-sm hover:-translate-y-0.5">Donate Now</a>
-                <button id="mobile-menu-btn" class="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 text-white" aria-label="Toggle menu">
+                <button id="mobile-menu-btn" class="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 text-white mobile-menu-btn" aria-label="Toggle menu">
                     <i data-lucide="menu" class="w-6 h-6 transition-transform duration-300" id="menu-icon"></i>
                 </button>
             </div>
@@ -591,39 +591,39 @@
         </div>
     </section>
 
-   <!-- ============================================================ -->
-<!-- HISTORY / WHO WE ARE                                          -->
-<!-- ============================================================ -->
-<section id="history" class="py-20 md:py-28 bg-white">
-    <div class="container mx-auto px-5 md:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div class="reveal-left">
-                <span class="text-secondary font-body font-semibold tracking-widest text-xs uppercase mb-3 block">Who We Are</span>
-                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-6">Building Stronger Communities Through Peace and Development</h2>
-                <div class="space-y-4 text-dark/65 font-body text-base leading-relaxed">
-                    <p><strong>PEACE AND DEVELOPMENT ORGANIZATION (PDO)</strong> is a National Non-Governmental Organization (NNGO) and non-profit making organization founded in South Sudan since 2020. The Relief & Rehabilitation Commission (RRC) under Chapter 3, Section 10 of the NGOs Act, 2016 legally registers it in 2021. Our main focus areas include Peacebuilding, Protection, Education, Health/Nutrition, WASH/NFI, Food Security and Livelihood, Disaster Risks Reduction & Climate Change Management.</p>
-                    <p>We are committed to provide immediate and long-term programmes to most vulnerable communities without regard to creed, race, gender or ethnicity, we empower people to participate fully in matter of peace and developmental projects on behalf of people both national and grassroots Forums. Our local presence covers Ayod, Bor South, Canal/Pigi, Akobo West, Uror, Fangak Counties (Jonglei State), Koch & Rubkona counties (Unity State) & Malakal county (Upper Nile State).</p>
-                    <p>PDO is in Partnership with South Sudan NGO Forum, Health, WASH, FSL, Education, Protection clusters including member of South Sudan Civil Society Networks to promote meaningful Citizen participation in Peace Building and Climate justice in South Sudan.</p>
+    <!-- ============================================================ -->
+    <!-- HISTORY / WHO WE ARE                                          -->
+    <!-- ============================================================ -->
+    <section id="history" class="py-20 md:py-28 bg-white">
+        <div class="container mx-auto px-5 md:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="reveal-left">
+                    <span class="text-secondary font-body font-semibold tracking-widest text-xs uppercase mb-3 block">Who We Are</span>
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-6">Building Stronger Communities Through Peace and Development</h2>
+                    <div class="space-y-4 text-dark/65 font-body text-base leading-relaxed">
+                        <p><strong>PEACE AND DEVELOPMENT ORGANIZATION (PDO)</strong> is a National Non-Governmental Organization (NNGO) and non-profit making organization founded in South Sudan since 2020. The Relief & Rehabilitation Commission (RRC) under Chapter 3, Section 10 of the NGOs Act, 2016 legally registers it in 2021. Our main focus areas include Peacebuilding, Protection, Education, Health/Nutrition, WASH/NFI, Food Security and Livelihood, Disaster Risks Reduction & Climate Change Management.</p>
+                        <p>We are committed to provide immediate and long-term programmes to most vulnerable communities without regard to creed, race, gender or ethnicity, we empower people to participate fully in matter of peace and developmental projects on behalf of people both national and grassroots Forums. Our local presence covers Ayod, Bor South, Canal/Pigi, Akobo West, Uror, Fangak Counties (Jonglei State), Koch & Rubkona counties (Unity State) & Malakal county (Upper Nile State).</p>
+                        <p>PDO is in Partnership with South Sudan NGO Forum, Health, WASH, FSL, Education, Protection clusters including member of South Sudan Civil Society Networks to promote meaningful Citizen participation in Peace Building and Climate justice in South Sudan.</p>
+                    </div>
+                    <!-- CTA Buttons -->
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="#goal" class="group inline-flex items-center gap-2.5 bg-accent hover:bg-accent-light text-white font-body font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 text-sm">
+                            Learn More About Us
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-300"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                        <a href="#leadership" class="group inline-flex items-center gap-2.5 bg-white border-2 border-accent text-accent hover:bg-accent hover:text-white font-body font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 text-sm">
+                            Meet the Team
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </a>
+                    </div>
                 </div>
-                <!-- CTA Buttons -->
-                <div class="mt-8 flex flex-wrap gap-4">
-                    <a href="#goal" class="group inline-flex items-center gap-2.5 bg-accent hover:bg-accent-light text-white font-body font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 text-sm">
-                        Learn More About Us
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-300"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
-                    <a href="#leadership" class="group inline-flex items-center gap-2.5 bg-white border-2 border-accent text-accent hover:bg-accent hover:text-white font-body font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 text-sm">
-                        Meet the Team
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </a>
+                <div class="reveal-right relative">
+                    <div class="rounded-3xl overflow-hidden shadow-soft-lg img-zoom-wrapper group"><img src="assets/pdo1.jpg" alt="Community work" class="w-full object-cover h-[380px] md:h-[460px]" /></div>
+                    <div class="absolute -bottom-5 -left-5 bg-accent text-white p-4 rounded-3xl shadow-xl"><p class="font-heading font-extrabold text-3xl">5+</p><p class="font-body text-xs text-white/75">Years of Impact</p></div>
                 </div>
-            </div>
-            <div class="reveal-right relative">
-                <div class="rounded-3xl overflow-hidden shadow-soft-lg img-zoom-wrapper group"><img src="assets/pdo1.jpg" alt="Community work" class="w-full object-cover h-[380px] md:h-[460px]" /></div>
-                <div class="absolute -bottom-5 -left-5 bg-accent text-white p-4 rounded-3xl shadow-xl"><p class="font-heading font-extrabold text-3xl">5+</p><p class="font-body text-xs text-white/75">Years of Impact</p></div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- ============================================================ -->
     <!-- GOAL, VISION, CORE VALUES                                     -->
@@ -683,33 +683,33 @@
     </section>
 
     <!-- ============================================================ -->
-<!-- THEMATIC FOCUS AREAS                                          -->
-<!-- ============================================================ -->
-<section id="thematic" class="py-20 md:py-28 bg-light-alt/50">
-    <div class="container mx-auto px-5 md:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-            <span class="text-secondary font-body font-semibold tracking-widest text-xs uppercase mb-3 block">What We Focus On</span>
-            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-5">Thematic Focus Areas</h2>
+    <!-- THEMATIC FOCUS AREAS                                          -->
+    <!-- ============================================================ -->
+    <section id="thematic" class="py-20 md:py-28 bg-light-alt/50">
+        <div class="container mx-auto px-5 md:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-secondary font-body font-semibold tracking-widest text-xs uppercase mb-3 block">What We Focus On</span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-5">Thematic Focus Areas</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="hand-heart" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Peacebuilding & Conflict Mitigation</h4></div>
+                <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="shield" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">General Protection (Child Protection & GBV)</h4></div>
+                <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="graduation-cap" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Equitable Education Development</h4></div>
+                <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="sprout" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Food Security & Livelihood (FSL)</h4></div>
+                <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="droplet" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Health, WASH & Shelter</h4></div>
+                <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="users" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Women & Youth Empowerment</h4></div>
+                <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="cloud-rain" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Disaster Risk Reduction & Climate Change</h4></div>
+                <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="scale" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Gender Justice & Disability Mainstreaming</h4></div>
+            </div>
+            <!-- Call to Action -->
+            <div class="mt-12 text-center reveal">
+                <a href="#activities" class="group inline-flex items-center gap-2.5 bg-accent hover:bg-accent-light text-white font-body font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 text-sm">
+                    See All Programs
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"></i>
+                </a>
+            </div>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="hand-heart" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Peacebuilding & Conflict Mitigation</h4></div>
-            <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="shield" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">General Protection (Child Protection & GBV)</h4></div>
-            <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="graduation-cap" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Equitable Education Development</h4></div>
-            <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="sprout" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Food Security & Livelihood (FSL)</h4></div>
-            <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="droplet" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Health, WASH & Shelter</h4></div>
-            <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="users" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Women & Youth Empowerment</h4></div>
-            <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="cloud-rain" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Disaster Risk Reduction & Climate Change</h4></div>
-            <div class="bg-white rounded-3xl p-6 shadow-card profile-card text-center"><i data-lucide="scale" class="w-7 h-7 text-primary mx-auto mb-3"></i><h4 class="font-heading font-semibold text-dark">Gender Justice & Disability Mainstreaming</h4></div>
-        </div>
-        <!-- Call to Action -->
-        <div class="mt-12 text-center reveal">
-            <a href="#activities" class="group inline-flex items-center gap-2.5 bg-accent hover:bg-accent-light text-white font-body font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 text-sm">
-                See All Programs
-                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"></i>
-            </a>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- ============================================================ -->
     <!-- MAIN ACTIVITIES (Health, Education, FSL, Climate, Governance)  -->
@@ -729,116 +729,105 @@
     </section>
 
     <!-- ============================================================ -->
-<!-- WHERE WE WORK                                                 -->
-<!-- ============================================================ -->
-<section id="where-we-work" class="py-20 md:py-28 bg-gradient-to-br from-slate-50 to-slate-100/80 relative overflow-hidden">
-    <!-- Subtle background pattern -->
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIxIiBmaWxsPSIjMGEzZDVjIiBmaWxsLW9wYWNpdHk9IjAuMDQiLz48L2c+PC9zdmc+')] opacity-40 pointer-events-none"></div>
-    <div class="absolute top-10 right-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
-    <div class="absolute bottom-10 left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-10"></div>
+    <!-- WHERE WE WORK                                                 -->
+    <!-- ============================================================ -->
+    <section id="where-we-work" class="py-20 md:py-28 bg-gradient-to-br from-slate-50 to-slate-100/80 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIxIiBmaWxsPSIjMGEzZDVjIiBmaWxsLW9wYWNpdHk9IjAuMDQiLz48L2c+PC9zdmc+')] opacity-40 pointer-events-none"></div>
+        <div class="absolute top-10 right-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-10"></div>
 
-    <div class="container mx-auto px-5 md:px-8 text-center relative z-10">
-        <div class="max-w-3xl mx-auto mb-16 reveal">
-            <span class="text-secondary font-body font-semibold tracking-widest text-xs uppercase mb-3 block">Geographic Footprint</span>
-            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-5">Where We Implement</h2>
-            <p class="text-dark/60 text-base md:text-lg max-w-2xl mx-auto">
-                Our programmes reach communities in <strong>Central Equatoria, Jonglei, Unity, and Upper Nile</strong> states.
-            </p>
-        </div>
-
-        <!-- Location cards grid -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5 max-w-5xl mx-auto mb-12 reveal">
-            <!-- Each card -->
-            <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
-                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
-                </div>
-                <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Juba (HQ)</h5>
-                <p class="text-xs text-dark/40 mt-1">Central Equatoria</p>
+        <div class="container mx-auto px-5 md:px-8 text-center relative z-10">
+            <div class="max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-secondary font-body font-semibold tracking-widest text-xs uppercase mb-3 block">Geographic Footprint</span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-5">Where We Implement</h2>
+                <p class="text-dark/60 text-base md:text-lg max-w-2xl mx-auto">
+                    Our programmes reach communities in <strong>Central Equatoria, Jonglei, Unity, and Upper Nile</strong> states.
+                </p>
             </div>
 
-            <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
-                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
+            <!-- Location cards grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5 max-w-5xl mx-auto mb-12 reveal">
+                <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
+                    </div>
+                    <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Juba (HQ)</h5>
+                    <p class="text-xs text-dark/40 mt-1">Central Equatoria</p>
                 </div>
-                <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Ayod</h5>
-                <p class="text-xs text-dark/40 mt-1">Jonglei State</p>
+                <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
+                    </div>
+                    <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Ayod</h5>
+                    <p class="text-xs text-dark/40 mt-1">Jonglei State</p>
+                </div>
+                <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
+                    </div>
+                    <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Bor South</h5>
+                    <p class="text-xs text-dark/40 mt-1">Jonglei State</p>
+                </div>
+                <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
+                    </div>
+                    <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Canal / Pigi</h5>
+                    <p class="text-xs text-dark/40 mt-1">Jonglei State</p>
+                </div>
+                <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
+                    </div>
+                    <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Akobo West</h5>
+                    <p class="text-xs text-dark/40 mt-1">Jonglei State</p>
+                </div>
+                <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
+                    </div>
+                    <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Uror</h5>
+                    <p class="text-xs text-dark/40 mt-1">Jonglei State</p>
+                </div>
+                <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
+                    </div>
+                    <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Fangak</h5>
+                    <p class="text-xs text-dark/40 mt-1">Jonglei State</p>
+                </div>
+                <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
+                    </div>
+                    <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Koch</h5>
+                    <p class="text-xs text-dark/40 mt-1">Unity State</p>
+                </div>
+                <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
+                    </div>
+                    <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Rubkona</h5>
+                    <p class="text-xs text-dark/40 mt-1">Unity State</p>
+                </div>
+                <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
+                    </div>
+                    <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Malakal</h5>
+                    <p class="text-xs text-dark/40 mt-1">Upper Nile State</p>
+                </div>
             </div>
 
-            <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
-                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
-                </div>
-                <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Bor South</h5>
-                <p class="text-xs text-dark/40 mt-1">Jonglei State</p>
-            </div>
-
-            <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
-                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
-                </div>
-                <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Canal / Pigi</h5>
-                <p class="text-xs text-dark/40 mt-1">Jonglei State</p>
-            </div>
-
-            <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
-                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
-                </div>
-                <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Akobo West</h5>
-                <p class="text-xs text-dark/40 mt-1">Jonglei State</p>
-            </div>
-
-            <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
-                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
-                </div>
-                <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Uror</h5>
-                <p class="text-xs text-dark/40 mt-1">Jonglei State</p>
-            </div>
-
-            <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
-                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
-                </div>
-                <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Fangak</h5>
-                <p class="text-xs text-dark/40 mt-1">Jonglei State</p>
-            </div>
-
-            <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
-                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
-                </div>
-                <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Koch</h5>
-                <p class="text-xs text-dark/40 mt-1">Unity State</p>
-            </div>
-
-            <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
-                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
-                </div>
-                <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Rubkona</h5>
-                <p class="text-xs text-dark/40 mt-1">Unity State</p>
-            </div>
-
-            <div class="location-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100/80 group cursor-pointer transition-all duration-300">
-                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-primary group-hover:text-white"></i>
-                </div>
-                <h5 class="font-heading font-semibold text-sm text-dark group-hover:text-primary transition-colors">Malakal</h5>
-                <p class="text-xs text-dark/40 mt-1">Upper Nile State</p>
+            <!-- CTA -->
+            <div class="reveal">
+                <a href="#contact" class="group inline-flex items-center gap-2.5 bg-accent hover:bg-accent-light text-white font-body font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 text-sm">
+                    Partner with Us
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"></i>
+                </a>
             </div>
         </div>
-
-        <!-- CTA -->
-        <div class="reveal">
-            <a href="#contact" class="group inline-flex items-center gap-2.5 bg-accent hover:bg-accent-light text-white font-body font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 text-sm">
-                Partner with Us
-                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"></i>
-            </a>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- ============================================================ -->
     <!-- IMPACT COUNTERS                                               -->
@@ -876,119 +865,98 @@
     </section>
 
     <!-- ============================================================ -->
-<!-- OUR PROCESS                                                   -->
-<!-- ============================================================ -->
-<section id="process" class="py-20 md:py-28 bg-light-alt/60 relative overflow-hidden">
-    <!-- subtle decorative blobs -->
-    <div class="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -z-10"></div>
-    <div class="absolute bottom-10 left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-10"></div>
-
-    <div class="container mx-auto px-5 md:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-            <span class="text-secondary font-body font-semibold tracking-widest text-xs uppercase mb-3 block">How We Work</span>
-            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-5">Our Process</h2>
-            <p class="text-dark/60 text-base md:text-lg max-w-2xl mx-auto">
-                Every PDO intervention follows a structured, participatory cycle that puts communities at the heart of change.
-            </p>
-        </div>
-
-        <!-- Process Steps Grid -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
-            <!-- Step 1 -->
-            <div class="process-card reveal-left delay-100 bg-white rounded-3xl p-7 shadow-card border border-slate-100/80 group transition-all duration-500">
-                <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary transition-all duration-400">
-                    <i data-lucide="search" class="w-7 h-7 text-primary group-hover:text-white transition-colors duration-400"></i>
-                </div>
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="w-8 h-8 bg-accent/10 text-accent-dark font-heading font-extrabold rounded-full flex items-center justify-center text-sm">1</span>
-                    <h3 class="font-heading font-bold text-xl text-dark">Community Assessment</h3>
-                </div>
-                <p class="text-dark/55 text-sm leading-relaxed">We begin by listening. Participatory assessments ensure interventions are locally owned and tailored to real needs.</p>
+    <!-- OUR PROCESS                                                   -->
+    <!-- ============================================================ -->
+    <section id="process" class="py-20 md:py-28 bg-light-alt/60 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-10"></div>
+        <div class="container mx-auto px-5 md:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-secondary font-body font-semibold tracking-widest text-xs uppercase mb-3 block">How We Work</span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-5">Our Process</h2>
+                <p class="text-dark/60 text-base md:text-lg max-w-2xl mx-auto">Every PDO intervention follows a structured, participatory cycle that puts communities at the heart of change.</p>
             </div>
-
-            <!-- Step 2 -->
-            <div class="process-card reveal-left delay-200 bg-white rounded-3xl p-7 shadow-card border border-slate-100/80 group transition-all duration-500">
-                <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary transition-all duration-400">
-                    <i data-lucide="clipboard-list" class="w-7 h-7 text-primary group-hover:text-white transition-colors duration-400"></i>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+                <div class="process-card reveal-left delay-100 bg-white rounded-3xl p-7 shadow-card border border-slate-100/80 group transition-all duration-500">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary transition-all duration-400">
+                        <i data-lucide="search" class="w-7 h-7 text-primary group-hover:text-white transition-colors duration-400"></i>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="w-8 h-8 bg-accent/10 text-accent-dark font-heading font-extrabold rounded-full flex items-center justify-center text-sm">1</span>
+                        <h3 class="font-heading font-bold text-xl text-dark">Community Assessment</h3>
+                    </div>
+                    <p class="text-dark/55 text-sm leading-relaxed">We begin by listening. Participatory assessments ensure interventions are locally owned and tailored to real needs.</p>
                 </div>
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="w-8 h-8 bg-accent/10 text-accent-dark font-heading font-extrabold rounded-full flex items-center justify-center text-sm">2</span>
-                    <h3 class="font-heading font-bold text-xl text-dark">Participatory Design</h3>
+                <div class="process-card reveal-left delay-200 bg-white rounded-3xl p-7 shadow-card border border-slate-100/80 group transition-all duration-500">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary transition-all duration-400">
+                        <i data-lucide="clipboard-list" class="w-7 h-7 text-primary group-hover:text-white transition-colors duration-400"></i>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="w-8 h-8 bg-accent/10 text-accent-dark font-heading font-extrabold rounded-full flex items-center justify-center text-sm">2</span>
+                        <h3 class="font-heading font-bold text-xl text-dark">Participatory Design</h3>
+                    </div>
+                    <p class="text-dark/55 text-sm leading-relaxed">Communities co‑create project plans. Gender justice and disability inclusion are mainstreamed from the start.</p>
                 </div>
-                <p class="text-dark/55 text-sm leading-relaxed">Communities co‑create project plans. Gender justice and disability inclusion are mainstreamed from the start.</p>
+                <div class="process-card reveal-right delay-300 bg-white rounded-3xl p-7 shadow-card border border-slate-100/80 group transition-all duration-500">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary transition-all duration-400">
+                        <i data-lucide="cog" class="w-7 h-7 text-primary group-hover:text-white transition-colors duration-400"></i>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="w-8 h-8 bg-accent/10 text-accent-dark font-heading font-extrabold rounded-full flex items-center justify-center text-sm">3</span>
+                        <h3 class="font-heading font-bold text-xl text-dark">Implementation</h3>
+                    </div>
+                    <p class="text-dark/55 text-sm leading-relaxed">Trained staff and community volunteers deliver quality programmes using our Programme Operations Policy.</p>
+                </div>
+                <div class="process-card reveal-right delay-400 bg-white rounded-3xl p-7 shadow-card border border-slate-100/80 group transition-all duration-500">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary transition-all duration-400">
+                        <i data-lucide="bar-chart-3" class="w-7 h-7 text-primary group-hover:text-white transition-colors duration-400"></i>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="w-8 h-8 bg-accent/10 text-accent-dark font-heading font-extrabold rounded-full flex items-center justify-center text-sm">4</span>
+                        <h3 class="font-heading font-bold text-xl text-dark">Monitoring & Learning</h3>
+                    </div>
+                    <p class="text-dark/55 text-sm leading-relaxed">Continuous M&E and community feedback loops allow us to adapt, learn, and improve impact.</p>
+                </div>
             </div>
-
-            <!-- Step 3 -->
-            <div class="process-card reveal-right delay-300 bg-white rounded-3xl p-7 shadow-card border border-slate-100/80 group transition-all duration-500">
-                <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary transition-all duration-400">
-                    <i data-lucide="cog" class="w-7 h-7 text-primary group-hover:text-white transition-colors duration-400"></i>
-                </div>
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="w-8 h-8 bg-accent/10 text-accent-dark font-heading font-extrabold rounded-full flex items-center justify-center text-sm">3</span>
-                    <h3 class="font-heading font-bold text-xl text-dark">Implementation</h3>
-                </div>
-                <p class="text-dark/55 text-sm leading-relaxed">Trained staff and community volunteers deliver quality programmes using our Programme Operations Policy.</p>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="process-card reveal-right delay-400 bg-white rounded-3xl p-7 shadow-card border border-slate-100/80 group transition-all duration-500">
-                <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary transition-all duration-400">
-                    <i data-lucide="bar-chart-3" class="w-7 h-7 text-primary group-hover:text-white transition-colors duration-400"></i>
-                </div>
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="w-8 h-8 bg-accent/10 text-accent-dark font-heading font-extrabold rounded-full flex items-center justify-center text-sm">4</span>
-                    <h3 class="font-heading font-bold text-xl text-dark">Monitoring & Learning</h3>
-                </div>
-                <p class="text-dark/55 text-sm leading-relaxed">Continuous M&E and community feedback loops allow us to adapt, learn, and improve impact.</p>
+            <div class="mt-12 text-center reveal">
+                <a href="#contact" class="group inline-flex items-center gap-2.5 bg-accent hover:bg-accent-light text-white font-body font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 text-sm">
+                    Partner with Us
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"></i>
+                </a>
             </div>
         </div>
+    </section>
 
-        <!-- Optional CTA -->
-        <div class="mt-12 text-center reveal">
-            <a href="#contact" class="group inline-flex items-center gap-2.5 bg-accent hover:bg-accent-light text-white font-body font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 text-sm">
-                Partner with Us
-                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"></i>
-            </a>
+    <!-- ============================================================ -->
+    <!-- PARTNERS (infinite left-to-right scroll)                     -->
+    <!-- ============================================================ -->
+    <section id="partners" class="py-16 md:py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-5 md:px-8 text-center mb-12 reveal">
+            <span class="text-secondary font-body font-semibold tracking-widest text-xs uppercase mb-3 block">Our Partners</span>
+            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-dark mb-5">Trusted by Organizations Worldwide</h2>
         </div>
-    </div>
-</section>
-
-   <!-- ============================================================ -->
-<!-- PARTNERS (infinite left-to-right scroll)                     -->
-<!-- ============================================================ -->
-<section id="partners" class="py-16 md:py-24 bg-white overflow-hidden">
-    <div class="container mx-auto px-5 md:px-8 text-center mb-12 reveal">
-        <span class="text-secondary font-body font-semibold tracking-widest text-xs uppercase mb-3 block">Our Partners</span>
-        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-dark mb-5">Trusted by Organizations Worldwide</h2>
-    </div>
-
-    <!-- Scrolling wrapper -->
-    <div class="relative w-full overflow-hidden">
-        <!-- The moving track -->
-        <div class="partners-track flex w-max gap-6">
-            <!-- Original set (will be duplicated via JS or manually) -->
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">South Sudan NGO Forum</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Health Cluster</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">WASH Cluster</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">FSL Cluster</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Education Cluster</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Protection Cluster</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Board of Directors</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Samaritan's Purse</div>
-            <!-- Duplicate set for seamless loop (manually add a copy) -->
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">South Sudan NGO Forum</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Health Cluster</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">WASH Cluster</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">FSL Cluster</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Education Cluster</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Protection Cluster</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Board of Directors</div>
-            <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Samaritan's Purse</div>
+        <div class="relative w-full overflow-hidden">
+            <div class="partners-track flex w-max gap-6">
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">South Sudan NGO Forum</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Health Cluster</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">WASH Cluster</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">FSL Cluster</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Education Cluster</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Protection Cluster</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Board of Directors</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Samaritan's Purse</div>
+                <!-- duplicate for seamless loop -->
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">South Sudan NGO Forum</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Health Cluster</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">WASH Cluster</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">FSL Cluster</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Education Cluster</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Protection Cluster</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Board of Directors</div>
+                <div class="partner-pill bg-light-alt rounded-2xl px-8 py-4 font-medium text-dark/70 shadow-sm whitespace-nowrap">Samaritan's Purse</div>
+            </div>
         </div>
-    </div>
-</section>
-
-    
+    </section>
 
     <!-- ============================================================ -->
     <!-- CONTACT (INFO ONLY)                                           -->
@@ -1028,103 +996,100 @@
     </section>
 
     <!-- ============================================================ -->
-<!-- FOOTER                                                        -->
-<!-- ============================================================ -->
-<footer class="bg-dark-soft text-white pt-20 pb-8">
-    <div class="container mx-auto px-5 md:px-8">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
-            <!-- Logo & description -->
-            <div>
-                <div class="flex items-center gap-3 mb-5">
-                    <img src="assets/pdologo.jpg" alt="PDO Logo" class="w-10 h-10 rounded-lg object-cover shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-                    <span class="font-heading font-extrabold text-2xl text-white">PDO</span>
+    <!-- FOOTER                                                        -->
+    <!-- ============================================================ -->
+    <footer class="bg-dark-soft text-white pt-20 pb-8">
+        <div class="container mx-auto px-5 md:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+                <!-- Logo & description -->
+                <div>
+                    <div class="flex items-center gap-3 mb-5">
+                        <img src="assets/pdologo.jpg" alt="PDO Logo" class="w-10 h-10 rounded-lg object-cover shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                        <span class="font-heading font-extrabold text-2xl text-white">PDO</span>
+                    </div>
+                    <p class="text-white/50 text-sm leading-relaxed mb-6">Peace and Development Organization – a National NGO registered in South Sudan, working to build peace, strengthen resilience, and create sustainable development.</p>
+                    <div class="flex gap-3">
+                        <a href="#" aria-label="Facebook" class="w-11 h-11 bg-white/10 border border-white/10 rounded-full flex items-center justify-center text-white/70 shadow-sm hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="w-11 h-11 bg-white/10 border border-white/10 rounded-full flex items-center justify-center text-white/70 shadow-sm hover:bg-[#1DA1F2] hover:text-white hover:border-[#1DA1F2] transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="w-11 h-11 bg-white/10 border border-white/10 rounded-full flex items-center justify-center text-white/70 shadow-sm hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2] transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="w-11 h-11 bg-white/10 border border-white/10 rounded-full flex items-center justify-center text-white/70 shadow-sm hover:bg-[#E4405F] hover:text-white hover:border-[#E4405F] transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                        </a>
+                    </div>
                 </div>
-                <p class="text-white/50 text-sm leading-relaxed mb-6">
-                    Peace and Development Organization – a National NGO registered in South Sudan, working to build peace, strengthen resilience, and create sustainable development.
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading font-bold text-base mb-5 text-white">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Home</a></li>
+                        <li><a href="#quick-facts" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">About Us</a></li>
+                        <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Programs</a></li>
+                        <li><a href="#impact" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Impact</a></li>
+                        <li><a href="#news" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">News</a></li>
+                        <li><a href="#contact" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Thematic Areas -->
+                <div>
+                    <h4 class="font-heading font-bold text-base mb-5 text-white">Thematic Areas</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Peacebuilding & Conflict Mitigation</a></li>
+                        <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Child Protection & GBV</a></li>
+                        <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Education Development</a></li>
+                        <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Food Security & Livelihood</a></li>
+                        <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Health, WASH & Shelter</a></li>
+                        <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Women & Youth Empowerment</a></li>
+                        <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Disaster Risk Reduction & Climate Change</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Newsletter -->
+                <div>
+                    <h4 class="font-heading font-bold text-base mb-5 text-white">Stay Connected</h4>
+                    <p class="font-body text-white/50 text-sm leading-relaxed mb-4">Subscribe to receive updates on our latest projects and impact stories.</p>
+                    <form class="flex gap-2 mb-6" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                        <input type="email" placeholder="Your email" class="flex-1 bg-white/8 border border-white/10 rounded-xl px-4 py-2.5 font-body text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/40 transition-all" required />
+                        <button type="submit" class="bg-accent hover:bg-accent-light text-white px-4 py-2.5 rounded-xl font-body font-semibold transition-all duration-300 flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </button>
+                    </form>
+                    <div class="space-y-2 text-sm text-white/50">
+                        <p class="flex items-start gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <span>info@pdo-ss.org</span>
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <span>+211 920 762 179</span>
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>Kololo Road, Juba, South Sudan</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="border-t border-white/8 pt-7 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="font-body text-white/35 text-xs">
+                    &copy; <span id="year"></span> Peace and Development Organization (PDO). All rights reserved. Registered NGO #3,756.
                 </p>
-                <!-- Social icons – now inline SVGs, clearly visible -->
-                <div class="flex gap-3">
-                    <a href="#" aria-label="Facebook" class="w-11 h-11 bg-white/10 border border-white/10 rounded-full flex items-center justify-center text-white/70 shadow-sm hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                    </a>
-                    <a href="#" aria-label="Twitter" class="w-11 h-11 bg-white/10 border border-white/10 rounded-full flex items-center justify-center text-white/70 shadow-sm hover:bg-[#1DA1F2] hover:text-white hover:border-[#1DA1F2] transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-                    </a>
-                    <a href="#" aria-label="LinkedIn" class="w-11 h-11 bg-white/10 border border-white/10 rounded-full flex items-center justify-center text-white/70 shadow-sm hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2] transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                    </a>
-                    <a href="#" aria-label="Instagram" class="w-11 h-11 bg-white/10 border border-white/10 rounded-full flex items-center justify-center text-white/70 shadow-sm hover:bg-[#E4405F] hover:text-white hover:border-[#E4405F] transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Quick Links -->
-            <div>
-                <h4 class="font-heading font-bold text-base mb-5 text-white">Quick Links</h4>
-                <ul class="space-y-3">
-                    <li><a href="#home" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Home</a></li>
-                    <li><a href="#quick-facts" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">About Us</a></li>
-                    <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Programs</a></li>
-                    <li><a href="#impact" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Impact</a></li>
-                    <li><a href="#news" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">News</a></li>
-                    <li><a href="#contact" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Thematic Areas -->
-            <div>
-                <h4 class="font-heading font-bold text-base mb-5 text-white">Thematic Areas</h4>
-                <ul class="space-y-3">
-                    <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Peacebuilding & Conflict Mitigation</a></li>
-                    <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Child Protection & GBV</a></li>
-                    <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Education Development</a></li>
-                    <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Food Security & Livelihood</a></li>
-                    <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Health, WASH & Shelter</a></li>
-                    <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Women & Youth Empowerment</a></li>
-                    <li><a href="#thematic" class="font-body text-white/50 hover:text-accent-light transition-colors text-sm">Disaster Risk Reduction & Climate Change</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact & Newsletter -->
-            <div>
-                <h4 class="font-heading font-bold text-base mb-5 text-white">Stay Connected</h4>
-                <p class="font-body text-white/50 text-sm leading-relaxed mb-4">Subscribe to receive updates on our latest projects and impact stories.</p>
-                <form class="flex gap-2 mb-6" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
-                    <input type="email" placeholder="Your email" class="flex-1 bg-white/8 border border-white/10 rounded-xl px-4 py-2.5 font-body text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/40 transition-all" required />
-                    <button type="submit" class="bg-accent hover:bg-accent-light text-white px-4 py-2.5 rounded-xl font-body font-semibold transition-all duration-300 flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </button>
-                </form>
-                <div class="space-y-2 text-sm text-white/50">
-                    <p class="flex items-start gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                        <span>info@pdo-ss.org</span>
-                    </p>
-                    <p class="flex items-start gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        <span>+211 920 762 179</span>
-                    </p>
-                    <p class="flex items-start gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <span>Kololo Road, Juba, South Sudan</span>
-                    </p>
+                <div class="flex gap-5">
+                    <a href="#" class="font-body text-white/35 text-xs hover:text-white/70 transition-colors">Privacy Policy</a>
+                    <a href="#" class="font-body text-white/35 text-xs hover:text-white/70 transition-colors">Terms of Service</a>
                 </div>
             </div>
         </div>
-
-        <!-- Bottom bar -->
-        <div class="border-t border-white/8 pt-7 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="font-body text-white/35 text-xs">
-                &copy; <span id="year"></span> Peace and Development Organization (PDO). All rights reserved. Registered NGO #3,756.
-            </p>
-            <div class="flex gap-5">
-                <a href="#" class="font-body text-white/35 text-xs hover:text-white/70 transition-colors">Privacy Policy</a>
-                <a href="#" class="font-body text-white/35 text-xs hover:text-white/70 transition-colors">Terms of Service</a>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <!-- ============================================================ -->
     <!-- JAVASCRIPT                                                   -->
@@ -1145,6 +1110,7 @@
             else navbar.classList.remove('scrolled');
         });
 
+        // Toggle mobile menu
         mobileMenuBtn.addEventListener('click', () => {
             menuOpen = !menuOpen;
             if (menuOpen) {
@@ -1159,6 +1125,7 @@
             lucide.createIcons();
         });
 
+        // Close mobile menu on link click (for top-level links)
         document.querySelectorAll('.mobile-nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 menuOpen = false;
@@ -1169,6 +1136,7 @@
             });
         });
 
+        // Close on outside click
         document.addEventListener('click', (e) => {
             if (menuOpen && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                 menuOpen = false;
@@ -1179,6 +1147,7 @@
             }
         });
 
+        // Close on resize to desktop
         window.addEventListener('resize', () => {
             if (window.innerWidth >= 1024 && menuOpen) {
                 menuOpen = false;
@@ -1189,30 +1158,32 @@
             }
         });
 
+        // Mobile dropdown accordion
         document.querySelectorAll('.mobile-dropdown-toggle').forEach(btn => {
             btn.addEventListener('click', () => {
                 const content = btn.nextElementSibling;
                 const icon = btn.querySelector('i');
-                if (content.classList.contains('open')) {
-                    content.classList.remove('open');
-                    icon.style.transform = 'rotate(0deg)';
-                } else {
-                    const parent = btn.closest('.mobile-dropdown');
-                    parent.parentElement.querySelectorAll('.mobile-dropdown-content').forEach(c => {
-                        if (c !== content) { c.classList.remove('open'); c.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)'; }
-                    });
+                const isOpen = content.classList.contains('open');
+
+                // Close all other dropdowns
+                document.querySelectorAll('.mobile-dropdown-content').forEach(c => c.classList.remove('open'));
+                document.querySelectorAll('.mobile-dropdown-toggle i').forEach(i => i.style.transform = 'rotate(0deg)');
+
+                if (!isOpen) {
                     content.classList.add('open');
                     icon.style.transform = 'rotate(180deg)';
                 }
             });
         });
 
+        // Scroll reveal
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { root: null, rootMargin: '0px 0px -40px 0px', threshold: 0.08 });
 
         document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revealObserver.observe(el));
 
+        // Animated counters
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1237,6 +1208,7 @@
         }, { threshold: 0.4 });
         document.querySelectorAll('.counter').forEach(counter => counterObserver.observe(counter));
 
+        // Logo image fallback
         document.querySelectorAll('img[src="assets/pdologo.jpg"]').forEach(img => {
             img.addEventListener('error', function() {
                 this.style.display = 'none';
